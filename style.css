@@ -1,0 +1,374 @@
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem;
+  height: 100vh;
+}
+
+    .section h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .section p {
+      max-width: 700px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .projects { background: #111; }
+    .skills { background: #1a1a1a; }
+    .education { background: #222; }
+    .experience { background: #2a2a2a; }
+    .about { background: #333; }
+    .social { background: #111; }
+
+    /* ---------- Timeline Navigation ---------- */
+    .timeline-nav {
+      position: fixed;
+      top: 50%;
+      right: 50px;
+      transform: translateY(-50%);
+      height: 60%;
+      width: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .timeline-fill {
+    position: absolute;
+    top: 0;            /* was bottom: 0 */
+    width: 100%;
+    height: 0%;
+    background: #00ffff;
+    border-radius: 4px;
+    transition: height 0.5s ease;
+    }
+
+    .timeline-labels {
+      position: fixed;
+      top: 50%;
+      right: 70px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 60%;
+    }
+
+    .timeline-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  transition: color 0.3s;
+  cursor: pointer; /* ← this makes the cursor a hand on hover */
+}
+
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .timeline-label.active .timeline-dot {
+      background: #00ffff;
+    }
+
+    .timeline-label.active {
+      color: #00ffff;
+      font-weight: 500;
+    }
+
+    .social-links {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+    justify-content: center; /* centers the icons horizontally */
+}
+
+.social-links a {
+  display: inline-block;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.social-links a:hover {
+  /* transform: scale(1.2); */
+  opacity: 0.8;
+}
+
+.profile-photo {
+  width: 150px;       /* adjust size as needed */
+  height: 150px;
+  border-radius: 50%; /* makes it a circle */
+  object-fit: cover;  /* ensures the image fills the circle nicely */
+  margin-bottom: 1.5rem;
+  border: 3px solid #00ffff; /* optional cyan border to match timeline */
+}
+
+.skills-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.skill-logo {
+  width: 60px;   /* adjust as needed */
+  height: 60px;
+  transition: transform 0.3s;
+  cursor: default;
+}
+
+.skill-logo:hover {
+  /* transform: scale(1.2); */
+  cursor:pointer;
+}
+
+.skills-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.badge {
+  background: #00ffff;
+  color: #111;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.badge:hover {
+  transform: scale(1.1);
+  background: #00cccc;
+}
+
+/* Tabs */
+.skills-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.tab {
+  background: transparent;
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s, color 0.3s;
+}
+
+.tab:hover {
+  background: #00ffff;
+  color: #111;
+}
+
+.tab.active {
+  background: #00ffff;
+  color: #111;
+}
+
+/* Skills category containers */
+.skills-category {
+  display: none; /* hide by default */
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.skills-category.active {
+  display: flex; /* show active category */
+}
+
+/* Wrapper allows horizontal scrolling if needed */
+.edu-cards-wrapper {
+  overflow-x: auto;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+/* Horizontal flex container */
+.edu-cards {
+  display: flex;
+  gap: 2rem;
+  min-width: max-content; /* allows scroll when content overflows */
+}
+
+/* Individual cards */
+.edu-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  min-width: 280px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.edu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+}
+
+.edu-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.edu-card p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Optional: hide scrollbar but still scrollable */
+.edu-cards-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+.edu-cards-wrapper::-webkit-scrollbar-thumb {
+  background: #00ffff;
+  border-radius: 3px;
+}
+
+.exp-cards-wrapper {
+  overflow-x: auto;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.exp-cards {
+  display: flex;
+  gap: 2rem;
+  min-width: max-content; /* allows scroll when content overflows */
+}
+
+.exp-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  min-width: 320px;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.exp-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+}
+
+.exp-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.exp-card p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.exp-desc {
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+/* Wrapper allows horizontal scroll */
+.proj-cards-wrapper {
+  overflow-x: auto;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+/* Horizontal flex container */
+.proj-cards {
+  display: flex;
+  gap: 2rem;
+  min-width: max-content; /* allows scroll when content overflows */
+}
+
+/* Individual project cards */
+.proj-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  min-width: 320px;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.proj-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+}
+
+.proj-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.proj-card p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.proj-desc {
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+/* Optional: hide scrollbar but keep scrollable */
+.proj-cards-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+.proj-cards-wrapper::-webkit-scrollbar-thumb {
+  background: #00ffff;
+  border-radius: 3px;
+}
+
+/* General paragraph inside sections */
+.section p {
+  max-width: 700px;
+  font-size: 1.1rem; /* increase from 0.95rem */
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Card descriptions specifically */
+.exp-desc, .proj-desc, .edu-card p {
+  font-size: 1.05rem; /* slightly larger than before */
+  line-height: 1.5;   /* improves readability */
+}
+
+.skill-logo.dark-on-dark {
+  filter: brightness(0) invert(1); /* inverts colors for visibility */
+}
