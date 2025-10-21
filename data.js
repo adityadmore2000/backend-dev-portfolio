@@ -54,7 +54,8 @@ const data = {
       "Prepared for deployment through serverless platforms (Vercel, Netlify) to realize cost-efficient scalability.",
       "Existing AI-based bug detection robust solutions require Gigabytes of storage to identify problems, but this solution gets the work done in MBs (~99% storage saved), saving computational costs.",
       "Explanation + demo available at: https://youtu.be/RWnosZw35s0",
-    ]
+    ],
+    "video":"https://www.youtube.com/embed/RWnosZw35s0"
   },
   {
     "title": "Verify WebGL Build – npm package (@adityamore.gamedev/is-webgl-build)",

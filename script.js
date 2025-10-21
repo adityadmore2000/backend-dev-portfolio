@@ -48,6 +48,18 @@ function createCard(item) {
       } else {
         modalDesc.textContent = item.description || "No further details.";
       }
+      if(item.video) {
+          const iframe = document.createElement('iframe');
+          iframe.width = "560";
+          iframe.height = "315";
+          iframe.src = item.video.replace('watch?v=', 'embed/');
+          iframe.title = item.title;
+          iframe.frameBorder = "0";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+          iframe.allowFullscreen = true;
+          modalDesc.appendChild(iframe);
+      }
+
   });
 
   card.appendChild(button);
@@ -103,4 +115,17 @@ data.skills.concepts.forEach(concept => {
 
 data.skills.database.forEach(db => {
   dbContainer.appendChild(createSkillTag(db));
+});
+
+
+// Close modal on X button
+closeModal.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+// Close modal when clicking outside modal content
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) { // only if clicked on background
+    modal.style.display = 'none';
+  }
 });
