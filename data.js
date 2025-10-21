@@ -54,7 +54,6 @@ const data = {
       "Prepared for deployment through serverless platforms (Vercel, Netlify) to realize cost-efficient scalability.",
       "Existing AI-based bug detection robust solutions require Gigabytes of storage to identify problems, but this solution gets the work done in MBs (~99% storage saved), saving computational costs.",
       "Explanation + demo available at: https://youtu.be/RWnosZw35s0",
-      "Tech: React.js, Npm, Node.js, Express.js, Supabase, PostgreSQL, MinIO, Docker, REST API"
     ]
   },
   {
@@ -70,18 +69,21 @@ const data = {
 ],
   skills: {
     languages: [
-      "C#", "JavaScript", "JSX", "ECMAScript", "HTML", "CSS", "Python"
+      "C#", "JavaScript", "HTML", "CSS", "Python"
     ],
     frameworks: [
-      "React.js", "React Hooks", "Express.js", "Node.js"
+      "React.js", "React Hooks", "Express.js", "Node.js","Jest"
     ],
     tools: [
-      "Git", "Docker", "Supabase", "npm", "PostgreSQL", "minio", "REST APIs", "Jest","Unity"
+      "Git", "Docker", "Supabase", "npm", "minio","Unity"
+    ],
+    database:[
+      "PostgreSQL"
     ],
     concepts: [
       "System Design", "Database Design", "DBMS", "Algorithms", "Data Structures",
       "User Authentication", "DNS Management", "Creative Problem Solving",
-      "Cost Efficiency", "Planning"
+      "Cost Efficiency", "Planning", "REST APIs"
     ]
   }
 

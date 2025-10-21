@@ -83,6 +83,7 @@ const languagesContainer = document.getElementById('languages-tags');
 const frameworksContainer = document.getElementById('frameworks-tags');
 const toolsContainer = document.getElementById('tools-tags');
 const conceptsContainer = document.getElementById('concepts-tags');
+const dbContainer = document.getElementById('database-tags');
 
 data.skills.languages.forEach(lang => {
   languagesContainer.appendChild(createSkillTag(lang));
@@ -98,4 +99,8 @@ data.skills.tools.forEach(tool => {
 
 data.skills.concepts.forEach(concept => {
   conceptsContainer.appendChild(createSkillTag(concept));
+});
+
+data.skills.database.forEach(db => {
+  dbContainer.appendChild(createSkillTag(db));
 });
