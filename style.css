@@ -168,3 +168,25 @@ h2 {
   transform: translateY(-2px);
   background: #00cccc;
 }
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.modal-links a {
+  color: #00ffff;
+  font-size: 0.9rem;
+  text-decoration: none;
+  background: #1b1b1b;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.modal-links a:hover {
+  background: #00cccc;
+}

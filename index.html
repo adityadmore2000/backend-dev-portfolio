@@ -7,31 +7,27 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- About Me -->
   <section id="about">
     <h1>About Me</h1>
     <p id="about-text"></p>
   </section>
 
-  <!-- Education -->
-  <section class="timeline-section" id="education-section">
+  <section class="section" id="education-section">
     <h2>Education</h2>
     <div class="cards-container" id="education-cards"></div>
   </section>
 
-  <!-- Experience -->
-  <section class="timeline-section" id="experience-section">
+  <section class="section" id="experience-section">
     <h2>Experience</h2>
     <div class="cards-container" id="experience-cards"></div>
   </section>
 
-  <!-- Projects -->
-  <section class="timeline-section" id="projects-section">
+  <section class="section" id="projects-section">
     <h2>Projects</h2>
     <div class="cards-container" id="projects-cards"></div>
   </section>
 
-  <section class="timeline-section" id="skills-section">
+  <section class="section" id="skills-section">
     <h2>Skills</h2>
 
       <div class="skills-container">
@@ -62,23 +58,26 @@
     </div>
   </section>
 
-  <!-- Social Links -->
-  <section class="timeline-section" id="social-section">
+  <section class="section" id="social-section">
     <h2>Social Links</h2>
     <div class="social-links">
       <a href="https://www.linkedin.com/in/adityamore2k/" target="_blank">LinkedIn</a>
       <a href="mailto:adityadmore2000@gmail.com">Email</a>
-      <!-- Add more links here -->
+      <a href="https://github.com/gamedev-adi" target="_blank">Github</a>
+
     </div>
   </section>
 
   <!-- Modal -->
   <div class="modal" id="modal">
-    <div class="modal-content">
-      <span class="close-btn" id="closeModal">&times;</span>
-      <h3 id="modal-title"></h3>
-      <div id="modal-description"></div>
-    </div>
+      <div class="modal-content">
+          <span class="close-btn" id="closeModal">&times;</span>
+          <div class="modal-header">
+            <h3 id="modal-title"></h3>
+            <div id="modal-links" class="modal-links"></div>
+          </div>
+          <div id="modal-description"></div>
+      </div>
   </div>
 
   <script src="data.js"></script>

@@ -8,11 +8,12 @@ const aboutText = document.getElementById('about-text');
 const modal = document.getElementById('modal');
 const modalTitle = document.getElementById('modal-title');
 const modalDesc = document.getElementById('modal-description');
+const modalLinks = document.getElementById('modal-links');
 const closeModal = document.getElementById('closeModal');
 
-closeModal.addEventListener('click', () => {
-  modal.style.display = 'none';
-});
+// Close modal
+closeModal.addEventListener('click', () => modal.style.display = 'none');
+modal.addEventListener('click', e => { if(e.target === modal) modal.style.display='none'; });
 
 // Function to create a card
 function createCard(item) {
@@ -33,11 +34,38 @@ function createCard(item) {
       modal.style.display = 'block';
       modalTitle.textContent = item.title;
 
-      // Clear previous content
+      // Clear modal
       modalDesc.innerHTML = '';
+      modalLinks.innerHTML = '';
 
-      // Check if description is array or string
-      if (Array.isArray(item.description)) {
+      // Handle links (array or single object)
+      let links = [];
+      if(item.links) links = Array.isArray(item.links) ? item.links : [item.links];
+
+      links.forEach(linkData => {
+        // Add external link
+        const a = document.createElement('a');
+        a.href = linkData.url;
+        a.textContent = linkData.text || "External Link";
+        a.target = "_blank";
+        modalLinks.appendChild(a);
+
+        // Embed YouTube iframe if URL is embed
+        if(linkData.url.includes("youtube.com/embed")) {
+          const iframe = document.createElement('iframe');
+          iframe.src = linkData.url;
+          iframe.width = "560";
+          iframe.height = "315";
+          iframe.title = item.title;
+          iframe.frameBorder = "0";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+          iframe.allowFullscreen = true;
+          modalDesc.appendChild(iframe);
+        }
+      });
+
+      // Handle description
+      if(Array.isArray(item.description)) {
         const ul = document.createElement('ul');
         item.description.forEach(line => {
           const li = document.createElement('li');
@@ -48,84 +76,29 @@ function createCard(item) {
       } else {
         modalDesc.textContent = item.description || "No further details.";
       }
-      if(item.video) {
-          const iframe = document.createElement('iframe');
-          iframe.width = "560";
-          iframe.height = "315";
-          iframe.src = item.video.replace('watch?v=', 'embed/');
-          iframe.title = item.title;
-          iframe.frameBorder = "0";
-          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-          iframe.allowFullscreen = true;
-          modalDesc.appendChild(iframe);
-      }
-
   });
 
   card.appendChild(button);
-
   return card;
 }
 
 // Populate sections
-aboutText.textContent = data.about; // About Me
+aboutText.textContent = data.about;
 
-data.education.forEach(ed => {
-  educationContainer.appendChild(createCard(ed));
+[data.education, data.experience, data.projects].forEach((section, i) => {
+  const container = [educationContainer, experienceContainer, projectsContainer][i];
+  section.forEach(item => container.appendChild(createCard(item)));
 });
 
-data.experience.forEach(exp => {
-  experienceContainer.appendChild(createCard(exp));
-});
-
-data.projects.forEach(proj => {
-  projectsContainer.appendChild(createCard(proj));
-});
-
-
-function createSkillTag(name) {
+// Skills
+function createSkillTag(name){
   const tag = document.createElement('span');
   tag.className = 'skill-tag';
   tag.textContent = name;
   return tag;
 }
 
-// Populate Skills
-const languagesContainer = document.getElementById('languages-tags');
-const frameworksContainer = document.getElementById('frameworks-tags');
-const toolsContainer = document.getElementById('tools-tags');
-const conceptsContainer = document.getElementById('concepts-tags');
-const dbContainer = document.getElementById('database-tags');
-
-data.skills.languages.forEach(lang => {
-  languagesContainer.appendChild(createSkillTag(lang));
-});
-
-data.skills.frameworks.forEach(fw => {
-  frameworksContainer.appendChild(createSkillTag(fw));
-});
-
-data.skills.tools.forEach(tool => {
-  toolsContainer.appendChild(createSkillTag(tool));
-});
-
-data.skills.concepts.forEach(concept => {
-  conceptsContainer.appendChild(createSkillTag(concept));
-});
-
-data.skills.database.forEach(db => {
-  dbContainer.appendChild(createSkillTag(db));
-});
-
-
-// Close modal on X button
-closeModal.addEventListener('click', () => {
-  modal.style.display = 'none';
-});
-
-// Close modal when clicking outside modal content
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) { // only if clicked on background
-    modal.style.display = 'none';
-  }
+['languages','frameworks','tools','concepts','database'].forEach(type=>{
+  const container = document.getElementById(`${type}-tags`);
+  data.skills[type].forEach(skill => container.appendChild(createSkillTag(skill)));
 });

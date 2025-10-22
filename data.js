@@ -52,19 +52,27 @@ const data = {
       "Prioritized efficient architecture over over-engineering for scalable analytics without redundant computation.",
       "Employed Supabase / MinIO for secure, structured data and video storage, and Docker to ensure local environment consistency and testing.",
       "Prepared for deployment through serverless platforms (Vercel, Netlify) to realize cost-efficient scalability.",
-      "Existing AI-based bug detection robust solutions require Gigabytes of storage to identify problems, but this solution gets the work done in MBs (~99% storage saved), saving computational costs.",
-      "Explanation + demo available at: https://youtu.be/RWnosZw35s0",
+      "Existing AI-based bug detection robust solutions require Gigabytes of storage to identify problems, but this solution gets the work done in MBs (~99% storage saved), saving computational costs."
     ],
-    "video":"https://www.youtube.com/embed/RWnosZw35s0"
+    "links":{
+      "text":"Demo & explaination",
+      "url":"https://www.youtube.com/embed/RWnosZw35s0"
+    }
   },
   {
-    "title": "Verify WebGL Build – npm package (@adityamore.gamedev/is-webgl-build)",
+    "title": "Verify WebGL Build – npm package",
     "duration": "10/25 – 10/25",
     "description": [
       "Developed a package to validate Unity WebGL builds, which handles both compressed and uncompressed builds.",
       "Tested locally with Jest, that covers missing or malformed files/folders to ensure reliability.",
       "Published it as open-source npm-package, which encourages community contributions and future extensions to other game engines.",
       "Will use this as dependency for PlaytestUrGame project."
+    ],
+    "links":[
+      {
+        "text":"View on npm",
+        "url":"https://www.npmjs.com/package/@adityamore.gamedev/is-webgl-build"
+      }
     ]
   },
 ],
